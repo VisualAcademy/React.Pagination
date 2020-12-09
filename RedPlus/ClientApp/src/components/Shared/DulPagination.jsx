@@ -38,8 +38,8 @@ export class DulPagination extends Component {
 
         //@* 페이지 수만큼 숫자 버튼 출력 *@
         let i = 0; // 숫자 버튼, 다음 n개에서 사용
-        let start = pageIndex / pagerButtonCount * pagerButtonCount + 1; //[?]
-        let end = (pageIndex / pagerButtonCount + 1) * pagerButtonCount; //[?]
+        let start = parseInt(pageIndex / pagerButtonCount) * pagerButtonCount + 1; //[?]
+        let end = (parseInt(pageIndex / pagerButtonCount) + 1) * pagerButtonCount; //[?]
 
         for (i = start; i <= end; i++) {
             let currentNumber = i; // 현재 페이지 번호 임시 저장
