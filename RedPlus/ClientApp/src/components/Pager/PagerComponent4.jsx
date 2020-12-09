@@ -15,7 +15,7 @@ export class PagerComponent4 extends Component {
             <>
                 <h1>Pager 4</h1>
                 <DulPagination
-                    pageNumber={1} pageSize={10} pagerButtonCount={5}
+                    pageNumber={8} pageSize={10} pagerButtonCount={5}
                     recordCount={109}
                     pageIndexChanged={(pageIndex) => this.pageIndexChanged(pageIndex)}></DulPagination>
             </>
