@@ -36,6 +36,25 @@ export class DulPagination extends Component {
             );
         }
 
+        //@* 이전 링크: 처음 페이지가 아니면 페이지 번호를 -1씩 감소 *@
+        if (pageNumber > 1) {
+            let prev = pageNumber - 1; // 이전 페이지 번호 계산
+            pages.push(
+                <li className="page-item" key={"prev"}>
+                    <a href={"prev"} className="page-link prev btn" onClick={(e) => this.pagerButtonClicked(prev, e)}>
+                        <span style={{ fontSize: '7pt' }}>PREV</span>
+                    </a>
+                </li >
+            );
+        }
+        else {
+            pages.push(
+                <li className="page-item" key={"prev"}>
+                    <a href={"prev"} className="page-link prev btn disabled"><span style={{ fontSize: '7pt' }}>PREV</span></a>
+                </li >
+            );
+        }
+
         //@* 페이지 수만큼 숫자 버튼 출력 *@
         let i = 0; // 숫자 버튼, 다음 n개에서 사용
         let start = parseInt(pageIndex / pagerButtonCount) * pagerButtonCount + 1; //[?]
@@ -65,6 +84,25 @@ export class DulPagination extends Component {
                     </li >
                 );
             }
+        }
+
+        //@*다음 링크: 마지막 페이지가 아니면 페이지 번호를 +1씩 증가*@
+        if (pageNumber < pageCount) {
+            let next = pageNumber + 1; // 다음 페이지 번호 계산
+            pages.push(
+                <li className="page-item" key={"next"}>
+                    <a href={"next"} className="page-link next btn" onClick={(e) => this.pagerButtonClicked(next, e)}>
+                        <span style={{ fontSize: '7pt' }}>NEXT</span>
+                    </a>
+                </li >
+            );
+        }
+        else {
+            pages.push(
+                <li className="page-item" key={"next"}>
+                    <a href={"next"} className="page-link next btn disabled"><span style={{ fontSize: '7pt' }}>NEXT</span></a>
+                </li >
+            );
         }
 
         //@* 마지막 링크 *@

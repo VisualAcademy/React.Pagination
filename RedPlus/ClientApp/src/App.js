@@ -13,6 +13,7 @@ import { PagerComponent1 } from './components/Pager/PagerComponent1';
 import { PagerComponent2 } from './components/Pager/PagerComponent2';
 import { PagerComponent3 } from './components/Pager/PagerComponent3';
 import { PagerComponent4 } from './components/Pager/PagerComponent4';
+import { PagerComponent6 } from './components/Pager/PagerComponent6';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -28,6 +29,7 @@ export default class App extends Component {
                 <Route path='/pager2' component={PagerComponent2} />
                 <Route path='/pager3' component={PagerComponent3} />
                 <Route path='/pager4' component={PagerComponent4} />
+                <Route path='/pager6' component={PagerComponent6} />
             </Layout>
         );
     }
