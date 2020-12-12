@@ -8,7 +8,7 @@ export class DulPagination extends Component {
     }
     pagerButtonClicked(pageNumber, e) {
         e.preventDefault(); 
-        console.log("Child", pageNumber); 
+        //console.log("Child", pageNumber); 
         this.props.pageIndexChanged(pageNumber - 1); // PageIndex를 부모 컴포넌트로 전송
     }
 
@@ -32,6 +32,27 @@ export class DulPagination extends Component {
                 <li className="page-item" key={"first"}>
                     <a href={"first"} className="page-link first btn" onClick={(e) => this.pagerButtonClicked(1, e)}>
                         <span style={{ fontSize: '7pt' }}>FIRST</span></a>
+                </li >
+            );
+        }
+
+        //@* 이전 n개 링크 *@
+        if (pageNumber > pagerButtonCount) {
+            let prevN = parseInt((pageNumber - 1) / pagerButtonCount) * pagerButtonCount; // 이전 n개 페이지 번호 계산
+            pages.push(
+                <li className="page-item" key={"prevN"}>
+                    <a href={"prevN"} className="page-link prev btn" onClick={(e) => this.pagerButtonClicked(prevN, e)}>
+                        <span style={{ fontSize: '7pt' }}>-{pagerButtonCount}</span>
+                    </a>
+                </li >
+            );
+        }
+        else {
+            pages.push(
+                <li className="page-item" key={"prevN"}>
+                    <a href={"prevN"} className="page-link prev btn disabled">
+                        <span style={{ fontSize: '7pt' }}>-{pagerButtonCount}</span>
+                    </a>
                 </li >
             );
         }
@@ -101,6 +122,28 @@ export class DulPagination extends Component {
             pages.push(
                 <li className="page-item" key={"next"}>
                     <a href={"next"} className="page-link next btn disabled"><span style={{ fontSize: '7pt' }}>NEXT</span></a>
+                </li >
+            );
+        }
+
+        //@* 다음 n개 링크 *@
+        if (i < pageCount) {
+            // 다음 n개 페이지 번호 계산
+            let nextN = parseInt(pageIndex / pagerButtonCount) * pagerButtonCount + pagerButtonCount + 1; //[?] 
+            pages.push(
+                <li className="page-item" key={"nextN"}>
+                    <a href={"nextN"} className="page-link next btn" onClick={(e) => this.pagerButtonClicked(nextN, e)}>
+                        <span style={{ fontSize: '7pt' }}>{pagerButtonCount}+</span>
+                    </a>
+                </li >
+            );
+        }
+        else {
+            pages.push(
+                <li className="page-item" key={"nextN"}>
+                    <a href={"nextN"} className="page-link next btn disabled">
+                        <span style={{ fontSize: '7pt' }}>{pagerButtonCount}+</span>
+                    </a>
                 </li >
             );
         }
